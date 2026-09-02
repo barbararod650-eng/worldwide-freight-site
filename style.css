@@ -238,3 +238,6 @@
   padding:4px 7px;display:flex;align-items:center;flex-shrink:0;
 }
 .logo-badge img{height:30px;width:auto;display:block;}
+
+/* buttons that are actually links */
+.nav-cta, .btn-primary, .btn-ghost { display:inline-block; text-decoration:none; text-align:center; }
