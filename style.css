@@ -231,3 +231,10 @@
   .perk{border-left:none;border-top:1px dashed var(--line);}
   .perk:first-child{border-top:none;}
 }
+
+/* logo badge */
+.logo-badge{
+  background:var(--paper);border:1px solid var(--rust);border-radius:4px;
+  padding:4px 7px;display:flex;align-items:center;flex-shrink:0;
+}
+.logo-badge img{height:30px;width:auto;display:block;}
