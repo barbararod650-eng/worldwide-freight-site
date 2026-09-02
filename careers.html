@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <title>Careers — Worldwide Freight Forwarder, LLC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,12 +16,7 @@
 <header>
   <nav class="nav">
     <div class="logo">
-      <svg class="mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="3" y="9" width="24" height="16" stroke="#C1440E" stroke-width="2"/>
-        <path d="M3 15H27" stroke="#C1440E" stroke-width="2"/>
-        <path d="M11 9V25" stroke="#C1440E" stroke-width="2"/>
-        <path d="M19 9V25" stroke="#C1440E" stroke-width="2"/>
-      </svg>
+      <div class="logo-badge"><img src="assets/logo-icon.png" alt="Worldwide Freight Forwarder, LLC logo"></div>
       <div class="logo-text">WORLDWIDE FREIGHT<br>FORWARDER, LLC<span>OCEAN &middot; CUSTOMS &middot; WAREHOUSING</span></div>
     </div>
     <div class="navlinks">
@@ -56,19 +52,19 @@
         <div class="rtitle">Freight Documentation Specialist</div>
         <div class="rloc">Hybrid / Remote</div>
         <div class="rdesc">Prepare bills of lading, invoices, and customs and shipping documents for outbound and inbound shipments.</div>
-        <a class="rapply" href="mailto:careers@worldwidefreightlogistics.org?subject=Application%20-%20Freight%20Documentation%20Specialist">Apply</a>
+        <button type="button" class="rapply" onclick="applyFor('Freight Documentation Specialist')">Apply</button>
       </div>
       <div class="role">
         <div class="rtitle">Customer Service Representative, Logistics</div>
         <div class="rloc">Hybrid / Remote</div>
         <div class="rdesc">Handle shipper and customer inquiries and resolve shipment issues as they come up, from booking through delivery.</div>
-        <a class="rapply" href="mailto:careers@worldwidefreightlogistics.org?subject=Application%20-%20Customer%20Service%20Representative%2C%20Logistics">Apply</a>
+        <button type="button" class="rapply" onclick="applyFor('Customer Service Representative, Logistics')">Apply</button>
       </div>
       <div class="role">
         <div class="rtitle">Transportation Coordinator</div>
         <div class="rloc">Hybrid / Remote</div>
         <div class="rdesc">Manage transportation arrangements and track shipment status across carriers, drayage providers, and warehouses.</div>
-        <a class="rapply" href="mailto:careers@worldwidefreightlogistics.org?subject=Application%20-%20Transportation%20Coordinator">Apply</a>
+        <button type="button" class="rapply" onclick="applyFor('Transportation Coordinator')">Apply</button>
       </div>
     </div>
 
@@ -83,9 +79,54 @@
       </div>
       <div class="perk">
         <div class="ptitle">How to apply</div>
-        <p>Email careers@worldwidefreightlogistics.org with the role in the subject line and a resume attached.</p>
+        <p>Use the form below, or email careers@worldwidefreightlogistics.org with the role in the subject line and a resume attached.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="apply">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag tag">// application</div>
+      <h2>Apply for a role.</h2>
+      <p>Fill this out and attach a resume &mdash; we'll follow up by email within a few business days.</p>
+    </div>
+    <form class="form-card" style="max-width:640px;" action="https://forminit.com/f/APPLY_FORM_ID" method="POST" enctype="multipart/form-data">
+      <div class="two-col">
+        <div class="form-row">
+          <label for="app-name">Full name</label>
+          <input id="app-name" name="full_name" type="text" placeholder="Jordan Reyes" required>
+        </div>
+        <div class="form-row">
+          <label for="app-email">Email</label>
+          <input id="app-email" name="email" type="email" placeholder="jordan@example.com" required>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="form-row">
+          <label for="app-phone">Phone</label>
+          <input id="app-phone" name="phone" type="tel" placeholder="(305) 555-0100">
+        </div>
+        <div class="form-row">
+          <label for="app-role">Role</label>
+          <select id="app-role" name="role">
+            <option>Freight Documentation Specialist</option>
+            <option>Customer Service Representative, Logistics</option>
+            <option>Transportation Coordinator</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="app-resume">Resume</label>
+        <input id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required>
+      </div>
+      <div class="form-row">
+        <label for="app-note">Anything else we should know?</label>
+        <textarea id="app-note" name="note" rows="3" placeholder="Availability, relevant experience, remote/hybrid preference"></textarea>
+      </div>
+      <button class="btn-primary" type="submit" style="width:100%;background:var(--rust);color:var(--paper);">Submit application</button>
+    </form>
   </div>
 </section>
 
@@ -155,6 +196,12 @@
 </footer>
 
 <script>
+  function applyFor(role){
+    var select = document.getElementById('app-role');
+    if (select) { select.value = role; }
+    var target = document.getElementById('apply');
+    if (target) { target.scrollIntoView({behavior:'smooth', block:'start'}); }
+  }
   document.getElementById('year').textContent = new Date().getFullYear();
   var menuBtn = document.querySelector('.menu-btn');
   var navlinks = document.querySelector('.navlinks');
