@@ -92,25 +92,25 @@
       <h2>Apply for a role.</h2>
       <p>Fill this out and attach a resume &mdash; we'll follow up by email within a few business days.</p>
     </div>
-    <form class="form-card" style="max-width:640px;" action="https://forminit.com/f/APPLY_FORM_ID" method="POST" enctype="multipart/form-data">
+    <form class="form-card" id="apply-form" style="max-width:640px;" enctype="multipart/form-data">
       <div class="two-col">
         <div class="form-row">
           <label for="app-name">Full name</label>
-          <input id="app-name" name="full_name" type="text" placeholder="Jordan Reyes" required>
+          <input id="app-name" name="fi-sender-fullName" type="text" placeholder="Jordan Reyes" required>
         </div>
         <div class="form-row">
           <label for="app-email">Email</label>
-          <input id="app-email" name="email" type="email" placeholder="jordan@example.com" required>
+          <input id="app-email" name="fi-sender-email" type="email" placeholder="jordan@example.com" required>
         </div>
       </div>
       <div class="two-col">
         <div class="form-row">
           <label for="app-phone">Phone</label>
-          <input id="app-phone" name="phone" type="tel" placeholder="(305) 555-0100">
+          <input id="app-phone" name="fi-sender-phone" type="tel" placeholder="(305) 555-0100">
         </div>
         <div class="form-row">
           <label for="app-role">Role</label>
-          <select id="app-role" name="role">
+          <select id="app-role" name="fi-select-role">
             <option>Freight Documentation Specialist</option>
             <option>Customer Service Representative, Logistics</option>
             <option>Transportation Coordinator</option>
@@ -119,14 +119,41 @@
       </div>
       <div class="form-row">
         <label for="app-resume">Resume</label>
-        <input id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required>
+        <input id="app-resume" name="fi-file-resume" type="file" accept=".pdf,.doc,.docx" required>
       </div>
       <div class="form-row">
         <label for="app-note">Anything else we should know?</label>
-        <textarea id="app-note" name="note" rows="3" placeholder="Availability, relevant experience, remote/hybrid preference"></textarea>
+        <textarea id="app-note" name="fi-text-note" rows="3" placeholder="Availability, relevant experience, remote/hybrid preference"></textarea>
       </div>
       <button class="btn-primary" type="submit" style="width:100%;background:var(--rust);color:var(--paper);">Submit application</button>
+      <p id="apply-form-status" style="margin-top:12px;font-size:13.5px;"></p>
     </form>
+    <script src="https://forminit.com/sdk/v1/forminit.js"></script>
+    <script>
+      (function(){
+        var forminit = new Forminit();
+        var FORM_ID = "f37d4dcpnnr";
+        var form = document.getElementById("apply-form");
+        form.addEventListener("submit", async function(e){
+          e.preventDefault();
+          var status = document.getElementById("apply-form-status");
+          var btn = form.querySelector("button[type=submit]");
+          btn.disabled = true;
+          status.textContent = "Sending...";
+          var formData = new FormData(form);
+          var result = await forminit.submit(FORM_ID, formData);
+          btn.disabled = false;
+          if (result.error) {
+            status.textContent = result.error.message;
+            status.style.color = "#8F330A";
+            return;
+          }
+          status.textContent = "Application sent — we'll follow up shortly.";
+          status.style.color = "#2F4F44";
+          form.reset();
+        });
+      })();
+    </script>
   </div>
 </section>
 
