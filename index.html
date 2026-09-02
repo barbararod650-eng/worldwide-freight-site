@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <title>Worldwide Freight Forwarder, LLC — Ocean Freight</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,12 +16,7 @@
 <header>
   <nav class="nav">
     <div class="logo">
-      <svg class="mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="3" y="9" width="24" height="16" stroke="#C1440E" stroke-width="2"/>
-        <path d="M3 15H27" stroke="#C1440E" stroke-width="2"/>
-        <path d="M11 9V25" stroke="#C1440E" stroke-width="2"/>
-        <path d="M19 9V25" stroke="#C1440E" stroke-width="2"/>
-      </svg>
+      <div class="logo-badge"><img src="assets/logo-icon.png" alt="Worldwide Freight Forwarder, LLC logo"></div>
       <div class="logo-text">WORLDWIDE FREIGHT<br>FORWARDER, LLC<span>OCEAN &middot; CUSTOMS &middot; WAREHOUSING</span></div>
     </div>
     <div class="navlinks">
@@ -184,30 +180,40 @@
         </div>
       </div>
     </div>
-    <div class="form-card">
+    <form class="form-card" action="https://forminit.com/f/QUOTE_FORM_ID" method="POST">
       <div class="two-col">
         <div class="form-row">
           <label for="name">Full name</label>
-          <input id="name" type="text" placeholder="Jordan Reyes">
+          <input id="name" name="full_name" type="text" placeholder="Jordan Reyes" required>
         </div>
         <div class="form-row">
           <label for="company">Company</label>
-          <input id="company" type="text" placeholder="Reyes Import Co.">
+          <input id="company" name="company" type="text" placeholder="Reyes Import Co.">
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="jordan@reyesimport.com" required>
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" placeholder="(305) 555-0100">
         </div>
       </div>
       <div class="two-col">
         <div class="form-row">
           <label for="origin">Origin port</label>
-          <input id="origin" type="text" placeholder="Shanghai, CN">
+          <input id="origin" name="origin_port" type="text" placeholder="Shanghai, CN">
         </div>
         <div class="form-row">
           <label for="dest">Destination</label>
-          <input id="dest" type="text" placeholder="Medley, FL">
+          <input id="dest" name="destination" type="text" placeholder="Medley, FL">
         </div>
       </div>
       <div class="form-row">
         <label for="load">Load type</label>
-        <select id="load">
+        <select id="load" name="load_type">
           <option>Full container load (FCL)</option>
           <option>Less than container load (LCL)</option>
           <option>Not sure yet</option>
@@ -215,10 +221,10 @@
       </div>
       <div class="form-row">
         <label for="details">Shipment details</label>
-        <textarea id="details" rows="3" placeholder="Cargo type, approximate volume, target ship date"></textarea>
+        <textarea id="details" name="details" rows="3" placeholder="Cargo type, approximate volume, target ship date"></textarea>
       </div>
-      <button class="btn-primary" style="width:100%;background:var(--rust);color:var(--paper);">Send request</button>
-    </div>
+      <button class="btn-primary" type="submit" style="width:100%;background:var(--rust);color:var(--paper);">Send request</button>
+    </form>
   </div>
 </section>
 
